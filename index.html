@@ -8,6 +8,12 @@
         margin: 0 auto;
         font-family: Tahoma, Verdana, Arial, sans-serif;
     }
+	.btn{
+		border-radius: 50%;
+		height: 100px;
+		width: 100px;
+		font-size: large;
+	}
 </style>
 </head>
 <body  style=" width: 100%;margin:0px;padding-top:10px; background: #0e0e0e; height: 100%-10px">
@@ -15,10 +21,10 @@
 	<label style="color: white;">源：</label><input style="width:35%;margin: 10px 5px;"  value="https://raw.githubusercontent.com/MW-S/MWCloudImg/main/Security/1.0.jpg" id ="source" type="text" size="100" submit="getImg()"/>
 	<button  onclick="getImg()">加载</button>
 </div>
-<div  style="display: flex;align-items: center;justify-content: center; padding: 10px 0px;">
-	<button id = "preImg">上一张</button>
+<div  style="display: flex;align-items: center;justify-content: center; padding: 10px 200px;">
+	<button class="btn" id = "preImg">上一张</button>
 	<img  id = "img"  style="-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://raw.githubusercontent.com/MW-S/MWCloudImg/main/Security/1.0.jpg" width="618" height="514"></img>
-	<button  id="nextImg">下一张</button>
+	<button class="btn"  id="nextImg">下一张</button>
 </div>
 
 <div style="display: flex;align-items: center;justify-content: center;">
@@ -37,7 +43,7 @@
 var getImg = function(){
 	var img = document.getElementById('img');
 	var source = document.getElementById('source').value;
-	img.setAttribute("src",source);
+		img.setAttribute("src",source);
 	}
 
 document.onkeydown = function (e) {
@@ -61,11 +67,12 @@ $(function() {
 				success: function(content,msg,res_set){
 					if(res_set.status == 200 || res_set.status == 302 ){
 						$("#img").attr("src",src)
+						$("#source").val(src)
 					}
 				},
 				error:function (result) {
 				   console.log("error="+result);
-					alert("不存在上一张!");
+				   alert("不存在上一张!");
 				},
 				fail:function (result) {
 					console.log("fail"+result);
@@ -88,6 +95,7 @@ $(function() {
 				success: function(content,msg,res_set){
 					if(res_set.status == 200 || res_set.status == 302 ){
 						$("#img").attr("src",src)
+						$("#source").val(src)
 					}
 				},
 				error:function (result) {
