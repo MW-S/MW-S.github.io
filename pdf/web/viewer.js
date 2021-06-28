@@ -15140,6 +15140,18 @@ if (document.readyState === "interactive" || document.readyState === "complete")
 } else {
   document.addEventListener("DOMContentLoaded", webViewerLoad, true);
 }
+
+window.onload = function(){
+
+document.getElementById('openFileUrl').onclick = function(){
+	PDFViewerApplication.close();
+	var pdf_source = prompt("地址：","https://raw.githubusercontent.com/MW-S/MWCloudImg/main/pdf/Security.pdf");
+	PDFViewerApplication.open(pdf_source)
+
+	}
+
+}
+
 })();
 
 /******/ })()
