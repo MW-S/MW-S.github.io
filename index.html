@@ -58,7 +58,7 @@ $(function() {
 		var start = src.lastIndexOf("/") + 1 //最后一个斜杠位置
 		var end = src.lastIndexOf(".jpg")
 		var current_index = parseFloat(src.substring(start,end));
-		current_index = parseFloat(current_index - 0.1);
+		current_index = parseFloat(current_index - 0.01);
 		current_index = current_index.toFixed(1)
 		src = src.substring(0,start) + current_index + src.substring(end)
 		$.ajax({
@@ -86,7 +86,7 @@ $(function() {
 		var start = src.lastIndexOf("/") + 1 //最后一个斜杠位置
 		var end = src.lastIndexOf(".jpg")
 		var current_index = parseFloat(src.substring(start,end));
-		current_index += 0.1;
+		current_index += 0.01;
 		current_index = current_index.toFixed(1);
 		src = src.substring(0,start) + current_index + src.substring(end)
 		$.ajax({
