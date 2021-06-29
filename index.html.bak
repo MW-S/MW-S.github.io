@@ -59,7 +59,7 @@ $(function() {
 		var end = src.lastIndexOf(".jpg")
 		var current_index = parseFloat(src.substring(start,end));
 		current_index = parseFloat(current_index - 0.01);
-		current_index = current_index.toFixed(1)
+		current_index = current_index.toFixed(2)
 		src = src.substring(0,start) + current_index + src.substring(end)
 		$.ajax({
 				url: src,
@@ -87,7 +87,7 @@ $(function() {
 		var end = src.lastIndexOf(".jpg")
 		var current_index = parseFloat(src.substring(start,end));
 		current_index += 0.01;
-		current_index = current_index.toFixed(1);
+		current_index = current_index.toFixed(2);
 		src = src.substring(0,start) + current_index + src.substring(end)
 		$.ajax({
 				url: src,
