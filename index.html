@@ -21,7 +21,7 @@
 	<label style="color: white;">源：</label><input style="width:35%;margin: 10px 5px;"  value="https://raw.githubusercontent.com/MW-S/MWCloudImg/main/Security/1.00.jpg" id ="source" type="text" size="100" submit="getImg()"/>
 	<button  onclick="getImg()">加载</button>
 </div>
-<div  style="display: flex;align-items: center;justify-content: center; padding: 10px 200px;">
+<div  style="display: flex;align-items: center;justify-content: center; padding: 10px 150px;">
 	<button class="btn" id = "preImg">上一张</button>
 	<img  id = "img"  style="-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://raw.githubusercontent.com/MW-S/MWCloudImg/main/Security/1.00.jpg" width="618" height="514"></img>
 	<button class="btn"  id="nextImg">下一张</button>
@@ -46,13 +46,9 @@ var getImg = function(){
 		img.setAttribute("src",source);
 	}
 
-document.onkeydown = function (e) {
-            if (!e) e = window.event;
-            if ((e.keyCode || e.which) == 13) {
-               getImg()
-            }
-        }
-$(function() { 
+
+$(function() {
+
 	$("#preImg").click(function(){
 		var src = $("#img").attr("src");
 		var start = src.lastIndexOf("/") + 1 //最后一个斜杠位置
@@ -109,6 +105,24 @@ $(function() {
 			});
 		
 	})
+	document.onkeydown = function (e) {
+            if (!e) e = window.event;
+            if ((e.keyCode || e.which) == 13) {
+               window.getImg()
+            } else if((e.keyCode || e.which) == 37) {
+				if (e.target.localName != "input")
+				{
+					 $("#preImg").click()
+				}
+              
+            } else if((e.keyCode || e.which) == 39) {
+               if (e.target.localName != "input")
+				{
+					 $("#nextImg").click()
+				}
+            }
+
+        }
 			$("#img").click(function() {
 				var _this = $(this);//将当前的pimg元素作为_this传入函数  
 				imgShow("#outerdiv", "#innerdiv", "#bigimg", _this);
